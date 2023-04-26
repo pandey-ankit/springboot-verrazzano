@@ -2,7 +2,7 @@
 
 ## Introduction
 
-You deployed the tomcat application. In this lab, we will access the application and verify using multiple management tools provided by Verrazzano.
+You deployed the Springboot application. In this lab, we will access the application and verify using multiple management tools provided by Verrazzano.
 
 Estimated Time: 15 minutes
 
@@ -57,7 +57,7 @@ In this lab, you will:
 
 * Kubernetes (OKE) cluster running on the Oracle Cloud Infrastructure.
 * Verrazzano installed on a Kubernetes (OKE) cluster.
-* Deployed tomcat sample application.
+* Deployed springboot sample application.
 
 
 ## Task 1: Explore the Rancher Console
@@ -122,18 +122,18 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Rancher Home](images/rancher-home.png)
 
-11. Click *Applications*. This section shows all the applications with their namespace and is managed by Verrazzano. Click the *tomcat-appconf* application within the *tomcat-ns* namespace.
-      ![Tomcat Application](images/tomcat-application.png)
+11. Click *Applications*. This section shows all the applications with their namespace and is managed by Verrazzano. Click the *springboot-appconf* application within the *springboot* namespace.
+      ![Sprinngboot Application](images/springboot-application.png)
 
 12. You can view the pods associated with the application. The pod name contains an auto-generated unique string to identify that particular replica. To view the logs of pods, Click *Three dots* -> *View Logs*.
-      ![Tomcat Components](images/view-pod-logs.png)
+      ![Springboot Components](images/view-pod-logs.png)
 
 13. You can view the application logs for the application. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start. To view the Component associated with the application, click *Components*.
       ![Application logs](images/view-pod-log.png)
 
 14. This application has only one component.To view what are the related resources, click *Related Resources*.
-      ![Tomcat Resource](images/tomcat-resource.png)
-      ![Tomcat Resources](images/tomcat-resources.png)
+      ![Springboot Resource](images/springboot-resource.png)
+      ![Springboot Resources](images/springboot-resources.png)
 
 15. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
       ![Verrazzano Cluster](images/verrazzano-cluster.png)
@@ -143,7 +143,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Cluster Explorer](images/cluster-dashboard.png)
 
-17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check deployed application.
+17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Workload** -> **Deployment** item in the left side menu to check deployed application.
 
       ![Nodes](images/node.png)
 
@@ -168,19 +168,19 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![proceed](images/grafana-proceed.png)
 
-5. Click on the *+* icon and then click *Import* as shown below.
-      ![import](images/import.png)
-      
-6. Enter the *6340* as value for *Import via grafana.com* and click *Load*.
-      ![load ID](images/load-id.png)
+5. In Grafana home, Click *Home* and then Select *JVM(Micrometer)* as shown.
+      ![Grafana home link](images/grafana-home-link.png)
+      ![JVM Metrics](images/jvm-metrics.png)
 
-7. Select *Prometheus* as default Datasource and click *Import*.
-      ![Import Datasource](images/import-datasource.png)
+6. You can view the metrics like application uptime, heap used, JVM memory data as shown below.
+      ![JVM 1](images/jvm-1.png)
+      ![JVM 2](images/jvm-2.png)
 
-8. Select *tomcat-ns* as namespace and *tomcat-container* as container, then you will be able to see the *Heap Used*, *Mem Committed* and other data as shown below.
-      ![select namespace](images/select-namespace.png)
+7. Similaryly, Click on JVM and open the *Application Status* dashboards as shown below.
+      ![Application Status](images/application-status.png)
 
-      > From Grafana.com, you can get more id to import in grafana console.
+8. You can view the application status in terms of CPU Used, Memory Used, Disk Used and HTTP Request/second and other information as shown below.
+      ![Application data](images/application-data.png)
 
 ## Task 3: Explore the OpenSearch Dashboards
 
@@ -199,10 +199,13 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 4. Invoke the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
 
       ```bash
-      <copy>curl -k https://$(kubectl get gateways.networking.istio.io tomcat-ns-tomcat-appconf-gw -n tomcat-ns -o jsonpath={.spec.servers[0].hosts[0]})/sample-webapp/log; echo</copy>
+      <copy>curl -k https://$(kubectl get gateways.networking.istio.io springboot-springboot-appconf-gw -n springboot -o jsonpath={.spec.servers[0].hosts[0]})/facts; echo</copy>
       ```
 
-5. Select the *`verrazzano-application*`* namespace as shown and then type the custom log entry value you created in the tomcat application: `Logs ` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result.
+      > what you see in the outcome, you can pick any word and search the same in next step. In our case, we will search the word *bridge*, but you can search any word from the outcome.
+
+5. Select the *`verrazzano-application*`* namespace as shown and then search for the logs in the Springboot application: `bridge ` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result.
+      ![application status](images/verrazzano-application.png)
       ![Log result](images/log-result.png)
 
 ## Task 4: Explore the Prometheus Console
@@ -213,11 +216,11 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
-3. On the Prometheus dashboard page type *tomcat* into the search field and click metric *tomcat_requestcount_total* and then click *Execute*.
+3. On the Prometheus dashboard page type *http* into the search field and click metric *`http_server_requests_seconds_count`* and then click *Execute*.
 
       ![Prometheus execute](images/prometheus-query.png)
 
-4. Click **Execute** and check the result below. You should see your metric's current value which means how many requests were completed by your endpoint. You can also switch to *Graph* view instead of the *Console* mode.
+4. Click **Execute** and check the result below. You should see your metric's current value which means total duration in seconds of serving http request. You can also switch to *Graph* view instead of the *Console* mode.
 
       ![Prometheus value](images/execute-query.png)
 
@@ -274,10 +277,10 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 6. Here you can view default configuration done by Verrazzano.
       ![Keycloak Home](images/keycloak-realms.png)
 
-Congratulations you have completed the tomcat application deployment on Verrazzano lab.
+Congratulations you have completed the Springboot application deployment on Verrazzano lab.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, April 2023

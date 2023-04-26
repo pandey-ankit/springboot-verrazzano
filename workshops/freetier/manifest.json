@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Deploy a Tomcat application to OKE using Verrazzano",
+    "workshoptitle": "Deploy a Springboot application to OKE using Verrazzano",
     "help": "livelabs-help-weblogic_us@oracle.com",
     "tutorials": [
         {
@@ -16,7 +16,7 @@
             "filename": "../../setup-oke-ocishell/setup-oke-ocishell.md"
         },
         {
-            "title": "Lab 2: Build and Push Tomcat Application Image to Oracle Cloud Container Registry",
+            "title": "Lab 2: Build and Push Springboot Application Image to Oracle Cloud Container Registry",
             "filename": "../../build-and-push-app-image/build-and-push-app-image.md"
         },
         {
@@ -24,7 +24,7 @@
             "filename": "../../install-verrazzano/install-verrazzano.md"
         },
         {
-            "title": "Lab 4: Deploy Tomcat Application on Verrazzano",
+            "title": "Lab 4: Deploy Springboot Application on Verrazzano",
             "filename": "../../deploy-app-on-verrazzano/deploy-app-on-verrazzano.md"
         },
 		    {

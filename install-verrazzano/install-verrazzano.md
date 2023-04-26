@@ -191,7 +191,7 @@ An ingress controller is something that helps provide access to Docker container
 
 Verrazzano installs multiple objects in multiple namespaces. Verrazzano components are installed in the namespace *verrazzano-system*.
 
-1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have 14 pods in the *Running* state.
+1. Please verify that all the pods associated with the multiple objects have a *Running* status.
 
     ```bash
     <copy>kubectl get pods -n verrazzano-system</copy>
@@ -228,4 +228,4 @@ You may now **proceed to the next lab**.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey,  March 2023
+* **Last Updated By/Date** - Ankit Pandey,  April 2023

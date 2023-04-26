@@ -31,8 +31,6 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
 2. In the Cluster List page, select the Compartment of your choice, where you are allowed to create a cluster, and then click *Create Cluster*.
 
-    > You need to select a compartment in which you are allowed to create a cluster and also, a repository inside the Oracle Container Registry.
-
     ![Select Compartment](images/select-compartment.png " ")
 
 3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*.
@@ -117,9 +115,9 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE   VERSION
-    10.0.10.178   Ready    node    11m   v1.24.1
-    10.0.10.164   Ready    node    11m   v1.24.1
-    10.0.10.231   Ready    node    11m   v1.24.1
+    10.0.10.140   Ready    node    11m   v1.24.1
+    10.0.10.190   Ready    node    11m   v1.24.1
+    10.0.10.70    Ready    node    11m   v1.24.1
     ```
 
     > If you see the node's information, then the configuration was successful.

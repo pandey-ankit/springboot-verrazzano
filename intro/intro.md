@@ -2,15 +2,13 @@
 
 ## About this Workshop
 
-Deploying a Tomcat application on a Kubernetes cluster can be a complex process that involves managing multiple containers, configuring networking, and ensuring high availability and scalability. To simplify this process, many organizations are turning to containerization technologies such as Docker and Kubernetes.
+In this workshop, we will explore how to deploy Spring Boot applications to an Oracle Kubernetes Engine (OKE) cluster using Verrazzano.
 
-Docker allows for the creation of portable container images that can be deployed on any platform, while Kubernetes provides a powerful orchestration engine that can manage the deployment and scaling of containers.
+In today's digital age, businesses are seeking ways to develop and deploy applications faster and more efficiently. Kubernetes has become the de facto standard for container orchestration, enabling organizations to deploy, manage, and scale containerized applications. Oracle Kubernetes Engine (OKE) provides a managed Kubernetes service that simplifies the deployment and management of containerized applications on Oracle Cloud Infrastructure (OCI).
 
-Oracle Verrazzano is a cloud-native platform that provides a unified management experience for deploying and operating containerized applications on Kubernetes clusters. It simplifies the deployment of complex applications by providing a consistent set of tools and APIs that can be used to manage and monitor applications across multiple clusters.
+Spring Boot is a popular Java-based framework used to build web applications and microservices. It offers a streamlined development experience with a convention-over-configuration approach, making it an excellent choice for building and deploying containerized applications on Kubernetes.
 
-In this workshop, we will explore the process of deploying a Tomcat application Docker image to an Oracle Kubernetes cluster using Verrazzano. We will cover the steps involved in creating a Docker image, configuring Verrazzano, deploying the application, and monitoring its performance. 
-
-By the end of this workshop, you will have a clear understanding of how to deploy containerized applications on an Oracle Kubernetes cluster using Verrazzano.
+Verrazzano is an open-source, Kubernetes-native platform that provides a complete end-to-end solution for deploying and managing cloud-native applications. It simplifies the deployment of complex, multi-component applications by providing a unified view of the application topology, as well as a set of integrated tools for deployment, monitoring, and management.
 
 This workshop is designed to be as self-explanatory as possible, but feel free to ask for clarification or assistance along the way.
 
@@ -19,11 +17,11 @@ Estimated Time: 90 minutes
 ### Objectives
 
 * Set up your Oracle Cloud Free Tier account (if you haven't done so already).
-* Set up an Oracle Kubernetes Engine instance on the Oracle Cloud Infrastructure.
-* Install the Verrazzano production profile.
-* Create sample tomcat application docker image.
-* Deploy tomcat application to OKE using Verrazzano.
-* Explore Grafana, Prometheus and OpenSearch Dashboard console.
+* Setting up an OKE cluster on OCI
+* Installing and configuring Verrazzano on the cluster
+* Building a container image for a Spring Boot application
+* Deploying the application to the OKE cluster using Verrazzano
+* Monitoring and managing the application using Verrazzano's integrated tools
 
 ### Prerequisites
 
@@ -32,9 +30,15 @@ Estimated Time: 90 minutes
 
 ## Learn More
 
-**About Tomcat**
+**About Springboot**
 
-Apache Tomcat is an open-source web server and servlet container that is widely used to deploy Java-based web applications. Tomcat is designed to be lightweight, efficient, and easy to use, and it provides a rich set of features for managing and deploying web applications. 
+Spring Boot is a popular Java-based framework used to build web applications and microservices. It offers a streamlined development experience with a convention-over-configuration approach, making it an excellent choice for building and deploying containerized applications on Kubernetes.
+
+Spring Boot provides a variety of features that make it easy to build and deploy applications quickly, such as embedded servers, auto-configuration, and a wide range of libraries and tools for building web applications, messaging systems, and data-driven applications. It also offers a rich set of tools for testing and debugging, making it easier to write robust and reliable code.
+
+One of the key benefits of Spring Boot is its ability to easily integrate with other technologies and frameworks, including database systems, message queues, and caching systems. This allows developers to build complex, distributed systems that can handle large-scale workloads and meet the demands of modern, cloud-based applications.
+
+With its focus on simplicity and ease of use, Spring Boot has become a popular choice among developers and organizations looking to build modern, cloud-native applications. It has a vibrant community of contributors and users, and is continuously evolving to meet the changing needs of the industry.
 
 
 **About Verrazzano**
@@ -51,11 +55,11 @@ Verrazzano includes the following capabilities:
 
 ![Verrazzano](images/verrazzano.png)
 
-* [https://tomcat.apache.org/](https://tomcat.apache.org/)
+* [https://spring.io/](https://spring.io/)
 * [https://verrazzano.io/](https://verrazzano.io/)
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, April 2023
